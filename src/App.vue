@@ -1,20 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
+
+const nome = ref('')
+const idade = ref('')
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+<input v-model="nome" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+<input type="number" v-model="idade" />
 
-  <main>
-    <TheWelcome />
-  </main>
 </template>
 
 <style scoped>
