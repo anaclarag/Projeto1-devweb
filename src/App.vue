@@ -2,13 +2,17 @@
 import { ref } from 'vue'
 
 const nome = ref('')
-const idade = ref('')
+const email = ref('')
 </script>
 
 <template>
-<input v-model="nome" />
+<form>
+<input v-model="nome" placeholder="Digite seu nome" />
+<input v-model="email" placeholder="Digite seu e-mail" /> 
+<button> </button>
+</form>
 
-<input type="number" v-model="idade" />
+
 
 </template>
 
