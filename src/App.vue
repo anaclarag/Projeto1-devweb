@@ -1,46 +1,109 @@
 <script setup>
 import { ref } from 'vue'
-
 const nome = ref('')
 const email = ref('')
+const senha = ref('')
+const confirmacao = ref('')
+const data = ref('')
+const endereco = ref('')
+const cidade = ref('')
+const estado = ref('')
+const hobbie = ref('')
+const programacao = ref('')
+const biografia = ref('')
+
+
+const ok = ref(false)
 </script>
 
+
 <template>
-<form>
-<input v-model="nome" placeholder="Digite seu nome" />
-<input v-model="email" placeholder="Digite seu e-mail" /> 
-<button> </button>
-</form>
+  <div>
+    <button>Nome:</button>
+    <input type="text" v-on:keypress="ok=false" v-model="nome" placeholder="Digite seu nome" />
+    <p>O nome digitado é: {{ nome }}</p>
 
+    <button>Email:</button>
+    <input type="email" v-on:keypress="ok=false" v-model="email" placeholder="Digite seu email" />
+    <p>O email digitado é: {{ email }}</p>
 
+    <button>Senha:</button>
+    <input type="password" v-on:keypress="ok=false" v-model="senha" placeholder="Digite sua senha" maxlength="20"/>
+    <p>A senha digitada é: {{ senha }}</p>
 
+    <button>Confirmação de senha:</button>
+    <input type="password" v-on:keypress="ok=false" v-model="confirmacao" placeholder="Digite sua senha novamente" maxlength="20"/>
+    <p>A confirmação digitada é: {{ confirmacao }}</p>
+
+    <button>Data de nascimento:</button>
+    <input type="text" v-on:keypress="ok=false" v-model="data" placeholder="Digite sua data" />
+    <p>A data digitada é: {{ data }}</p>
+
+    <button>Endereço:</button>
+    <input type="text" v-on:keypress="ok=false" v-model="endereco" placeholder="Digite seu endereço" />
+    <p>O endereço digitado é: {{ endereco }}</p>
+
+    <button>Cidade:</button>
+    <input type="text" v-on:keypress="ok=false" v-model="cidade" placeholder="Digite sua cidade" />
+    <p>A cidade digitada é: {{ cidade }}</p>
+  
+    <label for="estado" >Estado:</label>
+    <select v-on:keypress="ok=false" v-model="estado">
+      <option value="AC">Acre</option>
+      <option value="AL">Alagoas</option>
+      <option value="AP">Amapá</option>
+      <option value="AM">Amazonas</option>
+      <option value="BA">Bahia</option>
+      <option value="CE">Ceará</option>
+      <option value="DF">Distrito Federal</option>
+      <option value="ES">Espírito Santo</option>
+      <option value="GO">Goías</option>
+      <option value="MA">Maranhão</option>
+      <option value="MT">Mato Grosso</option>
+      <option value="MS">Mato Grosso do Sul</option>
+      <option value="MG">Minas Gerais</option>
+      <option value="PA">Pará</option>
+      <option value="PB">Paraíba</option>
+      <option value="PE">Pernambuco</option>
+      <option value="PI">Piauí</option>
+      <option value="RJ">Rio de Janeiro</option>
+      <option value="RN">Rio Grande do Norte</option>
+      <option value="RS">Rio Grande do Sul</option>
+      <option value="RO">Rondônia</option>
+      <option value="RR">Roráima</option>
+      <option value="SC">Santa Catarina</option>
+      <option value="SP">São Paulo</option>
+      <option value="SE">Sergipe</option>
+      <option value="TO">Tocantins</option>
+     </select>
+    <p>O estado digitado é: {{ estado }}</p>
+  
+    <button>Hobbie:</button>
+    <input type="text" v-on:keypress="ok=false" v-model="hobbie" placeholder="Digite seu hobbie" />
+    <p>O hobbie digitado é: {{ hobbie }}</p>
+
+    <button>Linguagem de programação:</button>
+    <input type="text" v-on:keypress="ok=false" v-model="programacao" placeholder="Digite sua linguagem de programação" />
+    <p>A linguagem de programação digitada é: {{ programacao }}</p>
+  
+    <button>Biografia:</button>
+    <input type="text" v-on:keypress="ok=false" v-model="biografia" placeholder="Digite sua biografia" />
+    <p>A biografia digitada é: {{ biografia }}</p>
+  
+    <button @click="ok = !ok">Mostrar</button>
+  </div>
+  <div v-if="ok">
+    <p>O nome digitado é: {{ nome }}</p>
+    <p>O email digitado é: {{ email }}</p>
+    <p>A senha digitada é: {{ senha }}</p>
+    <p>A confirmação digitada é: {{ confirmacao }}</p> 
+    <p>A data digitada é: {{ data }}</p>
+    <p>O endereço digitado é: {{ endereco }}</p>
+    <p>A cidade digitada é: {{ cidade }}</p>
+    <p>O estado digitado é: {{ estado }}</p>
+    <p>O hobbie digitado é: {{ hobbie }}</p>
+    <p>A linguagem de programação digitada é: {{ programacao }}</p>
+    <p>A biografia digitada é: {{ biografia }}</p>
+   
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
