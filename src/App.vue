@@ -13,40 +13,60 @@ const programacao = ref('')
 const biografia = ref('')
 
 
+
 const ok = ref(false)
+
+function validar() {
+  if (senha.value === confirmacao.value) {
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 </script>
 
 
 <template>
   <div>
+
+    <p>
     <button>Nome:</button>
     <input type="text" v-on:keypress="ok=false" v-model="nome" placeholder="Digite seu nome" />
-    <p>O nome digitado é: {{ nome }}</p>
+    </p>
 
+    <p>
     <button>Email:</button>
     <input type="email" v-on:keypress="ok=false" v-model="email" placeholder="Digite seu email" />
-    <p>O email digitado é: {{ email }}</p>
+    </p>
 
+    <p>
     <button>Senha:</button>
     <input type="password" v-on:keypress="ok=false" v-model="senha" placeholder="Digite sua senha" maxlength="20"/>
-    <p>A senha digitada é: {{ senha }}</p>
+    </p>
 
+    <p>
     <button>Confirmação de senha:</button>
     <input type="password" v-on:keypress="ok=false" v-model="confirmacao" placeholder="Digite sua senha novamente" maxlength="20"/>
-    <p>A confirmação digitada é: {{ confirmacao }}</p>
+    </p>
 
+    <p>
     <button>Data de nascimento:</button>
     <input type="text" v-on:keypress="ok=false" v-model="data" placeholder="Digite sua data" />
-    <p>A data digitada é: {{ data }}</p>
+    </p>
 
+    <p>
     <button>Endereço:</button>
     <input type="text" v-on:keypress="ok=false" v-model="endereco" placeholder="Digite seu endereço" />
-    <p>O endereço digitado é: {{ endereco }}</p>
+    </p>
 
+    <p>
     <button>Cidade:</button>
     <input type="text" v-on:keypress="ok=false" v-model="cidade" placeholder="Digite sua cidade" />
-    <p>A cidade digitada é: {{ cidade }}</p>
-  
+    </p>
+    
+    <p>
     <label for="estado" >Estado:</label>
     <select v-on:keypress="ok=false" v-model="estado">
       <option value="AC">Acre</option>
@@ -76,19 +96,22 @@ const ok = ref(false)
       <option value="SE">Sergipe</option>
       <option value="TO">Tocantins</option>
      </select>
-    <p>O estado digitado é: {{ estado }}</p>
+    </p>
   
+    <p>
     <button>Hobbie:</button>
     <input type="text" v-on:keypress="ok=false" v-model="hobbie" placeholder="Digite seu hobbie" />
-    <p>O hobbie digitado é: {{ hobbie }}</p>
+    </p>
 
+    <p>
     <button>Linguagem de programação:</button>
     <input type="text" v-on:keypress="ok=false" v-model="programacao" placeholder="Digite sua linguagem de programação" />
-    <p>A linguagem de programação digitada é: {{ programacao }}</p>
-  
+    </p>
+    
+    <p>
     <button>Biografia:</button>
     <input type="text" v-on:keypress="ok=false" v-model="biografia" placeholder="Digite sua biografia" />
-    <p>A biografia digitada é: {{ biografia }}</p>
+    </p>
   
     <button @click="ok = !ok">Mostrar</button>
   </div>
@@ -107,3 +130,28 @@ const ok = ref(false)
    
   </div>
 </template>
+<style scoped>
+
+button {
+  margin: 5px;
+  font-weight: bold;
+  width: 200px;
+  background-color: rgb(50, 177, 209);
+  color: rgb(248, 248, 248);
+
+}
+
+label {
+  margin: 50px;
+  font-weight: bold;
+  background-color: rgb(50, 177, 209);
+  color: rgb(248, 248, 248);
+
+}
+
+select{
+  background-color: rgb(50, 177, 209);
+  font-weight: bold;
+}
+
+</style>
