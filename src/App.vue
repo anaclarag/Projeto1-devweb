@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 const nome = ref('')
 const email = ref('')
 const senha = ref('')
@@ -11,12 +11,9 @@ const estado = ref('')
 const hobbie = ref('')
 const programacao = ref('')
 const biografia = ref('')
-
-
-
 const ok = ref(false)
 
-function validar() {
+function validar(){
   if (senha.value === confirmacao.value) {
     return true;
   }
@@ -24,13 +21,18 @@ function validar() {
     return false;
   }
 }
+const mensagemErro = computed(() => {
+  if(senha.value != confirmacao.value){
+    return 'As senhas devem ser iguais'
+  } else{
+    return ''
+  }
+})
 
 </script>
-
-
 <template>
+  <form @submit.prevent= "ok = validar()">
   <div>
-
     <p>
     <button>Nome:</button>
     <input type="text" v-on:keypress="ok=false" v-model="nome" placeholder="Digite seu nome" />
@@ -53,7 +55,7 @@ function validar() {
 
     <p>
     <button>Data de nascimento:</button>
-    <input type="text" v-on:keypress="ok=false" v-model="data" placeholder="Digite sua data" />
+    <input type="date" v-on:keypress="ok=false" v-model="data" placeholder="Digite sua data" />
     </p>
 
     <p>
@@ -114,7 +116,9 @@ function validar() {
     </p>
   
     <button @click="ok = !ok">Mostrar</button>
+    <p>{{ mensagemErro }}</p>
   </div>
+    </form>
   <div v-if="ok">
     <p>O nome digitado é: {{ nome }}</p>
     <p>O email digitado é: {{ email }}</p>
@@ -127,9 +131,9 @@ function validar() {
     <p>O hobbie digitado é: {{ hobbie }}</p>
     <p>A linguagem de programação digitada é: {{ programacao }}</p>
     <p>A biografia digitada é: {{ biografia }}</p>
-   
   </div>
 </template>
+
 <style scoped>
 
 button {
@@ -153,5 +157,24 @@ select{
   background-color: rgb(50, 177, 209);
   font-weight: bold;
 }
+
+form {
+  width: 25%;
+  margin: 5em auto;
+  padding: 3em;
+  background-color:rgb(153, 240, 240);
+  animation-name: nova_animacao;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+
+}
+@keyframes nova_animacao {
+   50% {background-color:rgb(153, 240, 240);;}
+   50% {background-color:#26dfe6;}
+  
+}
+
 
 </style>
